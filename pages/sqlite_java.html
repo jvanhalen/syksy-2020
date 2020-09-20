@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>
+    
+    SQLite Javassa - Tietokantojen perusteet syksy 2020
+    
+  </title>
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: {
+          scale: 87
+        }
+      });
+      </script>
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel='stylesheet' type='text/css' media='screen' href=/syksy-2020/assets/css/main.css>
+  <link rel='stylesheet' type='text/css' media='screen' href=/syksy-2020/assets/css/syntax.css>
+
+  <script src=/syksy-2020/assets/js/main.js></script>
+
+</head>
+
+
+<body id="chapter">
+    
+<nav class="no-nav" id="side-nav" >
+    <button id="hide" onclick="hideSideNav()"> &#x2715;</button>
+    <button id="show" onclick="showSideNav()"> </button>
+    <h2>Tietokantojen perusteet syksy 2020</h2>
+    
+    <ol>
+
+        <li class="side-nav-obj" id="indexnav"><a href=/syksy-2020/index>Etusivu </a></li>
+        
+        
+        
+        <li class="side-nav-obj" id="Materiaalinav"><a href="/syksy-2020/pages/materiaali.html">Materiaali</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="side-nav-obj" id="Tehtävät ja harjoitustyönav"><a href="/syksy-2020/pages/tehtavat.html">Tehtävät ja harjoitustyö</a></li>
+        
+        
+        <br>
+        
+        
+        <li class="side-nav-obj" id="1. Johdantonav"><a href="/syksy-2020/content/osa-1/index.html">1. Johdanto</a></li>
+        
+        
+            
+            <li class="side-nav-sub-obj" id="Mikä on tietokanta?nav"><a href="/syksy-2020/content/osa-1/index.html#mikä-on-tietokanta?">Mikä on tietokanta?</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Tee-se-itse-tietokantanav"><a href="/syksy-2020/content/osa-1/index.html#tee-se-itse-tietokanta">Tee-se-itse-tietokanta</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Relaatiomalli ja SQL-kielinav"><a href="/syksy-2020/content/osa-1/index.html#relaatiomalli-ja-sql-kieli">Relaatiomalli ja SQL-kieli</a></li>
+        
+            
+        
+        
+        
+        
+        <li class="side-nav-obj" id="2. SQL-kielen perusteetnav"><a href="/syksy-2020/content/osa-2/index.html">2. SQL-kielen perusteet</a></li>
+        
+        
+            
+            <li class="side-nav-sub-obj" id="Peruskomennotnav"><a href="/syksy-2020/content/osa-2/index.html#peruskomennot">Peruskomennot</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Yhteenveto ja ryhmittelynav"><a href="/syksy-2020/content/osa-2/index.html#yhteenveto-ja-ryhmittely">Yhteenveto ja ryhmittely</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="SQLite-tietokantanav"><a href="/syksy-2020/content/osa-2/index.html#sqlite-tietokanta">SQLite-tietokanta</a></li>
+        
+            
+        
+        
+        
+        
+        <li class="side-nav-obj" id="3. Monen taulun kyselytnav"><a href="/syksy-2020/content/osa-3/index.html">3. Monen taulun kyselyt</a></li>
+        
+        
+            
+            <li class="side-nav-sub-obj" id="Taulujen viittauksetnav"><a href="/syksy-2020/content/osa-3/index.html#taulujen-viittaukset">Taulujen viittaukset</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Liitostaulutnav"><a href="/syksy-2020/content/osa-3/index.html#liitostaulut">Liitostaulut</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="JOIN-syntaksinav"><a href="/syksy-2020/content/osa-3/index.html#join-syntaksi">JOIN-syntaksi</a></li>
+        
+            
+        
+        
+        
+        
+        <li class="side-nav-obj" id="4. Lisää SQL-kielestänav"><a href="/syksy-2020/content/osa-4/index.html">4. Lisää SQL-kielestä</a></li>
+        
+        
+            
+            <li class="side-nav-sub-obj" id="Tyypit ja lausekkeetnav"><a href="/syksy-2020/content/osa-4/index.html#tyypit-ja-lausekkeet">Tyypit ja lausekkeet</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="NULL-arvotnav"><a href="/syksy-2020/content/osa-4/index.html#null-arvot">NULL-arvot</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Alikyselytnav"><a href="/syksy-2020/content/osa-4/index.html#alikyselyt">Alikyselyt</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Lisää tekniikoitanav"><a href="/syksy-2020/content/osa-4/index.html#lisää-tekniikoita">Lisää tekniikoita</a></li>
+        
+            
+        
+        
+        
+        
+        <li class="side-nav-obj" id="5. Tietokannan suunnittelunav"><a href="/syksy-2020/content/osa-5/index.html">5. Tietokannan suunnittelu</a></li>
+        
+        
+            
+            <li class="side-nav-sub-obj" id="Taulut ja sarakkeetnav"><a href="/syksy-2020/content/osa-5/index.html#taulut-ja-sarakkeet">Taulut ja sarakkeet</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Tiedon atomisuusnav"><a href="/syksy-2020/content/osa-5/index.html#tiedon-atomisuus">Tiedon atomisuus</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Toisteinen tietonav"><a href="/syksy-2020/content/osa-5/index.html#toisteinen-tieto">Toisteinen tieto</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Suunnitteluesimerkkinav"><a href="/syksy-2020/content/osa-5/index.html#suunnitteluesimerkki">Suunnitteluesimerkki</a></li>
+        
+            
+        
+        
+        
+        
+        <li class="side-nav-obj" id="6. Tietokannan ominaisuudetnav"><a href="/syksy-2020/content/osa-6/index.html">6. Tietokannan ominaisuudet</a></li>
+        
+        
+            
+            <li class="side-nav-sub-obj" id="Tiedon eheysnav"><a href="/syksy-2020/content/osa-6/index.html#tiedon-eheys">Tiedon eheys</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Transaktiotnav"><a href="/syksy-2020/content/osa-6/index.html#transaktiot">Transaktiot</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Kyselyjen suoritusnav"><a href="/syksy-2020/content/osa-6/index.html#kyselyjen-suoritus">Kyselyjen suoritus</a></li>
+        
+            
+            <li class="side-nav-sub-obj" id="Indeksitnav"><a href="/syksy-2020/content/osa-6/index.html#indeksit">Indeksit</a></li>
+        
+            
+        
+        
+        
+    </ol>
+</nav>
+
+    <div class="page-content">
+        <div class="content">
+    <div class="table-of-content" id="tof" style="display: none;">
+    <ul>
+        
+    </ul>
+</div>
+
+    <h1 id="sqlite-javassa">SQLite Javassa</h1>
+
+<p>Voimme käyttää Javassa SQLite-tietokantaa lataamalla
+sopivan JDBC-ajurin netistä.
+Tämä sivu kertoo perusasiat SQLite-tietokannan käyttämisestä Javalla,
+ja voit halutessasi etsiä lisätietoa netistä ja Javan dokumentaatiosta.</p>
+
+<h2 id="esimerkki">Esimerkki</h2>
+
+<p>Seuraava koodi käyttää tietokantaa, joka on tiedostossa <code class="language-html highlighter-rouge">testi.db</code>.
+Koodi luo taulun <code class="language-html highlighter-rouge">Tuotteet</code> ja lisää sinne viisi riviä.
+Tämän jälkeen koodi hakee ja näyttää taulun rivit.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Testi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">db</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:sqlite:testi.db"</span><span class="o">);</span>
+        <span class="nc">Statement</span> <span class="n">s</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+        <span class="n">s</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"CREATE TABLE Tuotteet (id INTEGER PRIMARY KEY, nimi TEXT, hinta INTEGER)"</span><span class="o">);</span>
+        <span class="n">s</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"INSERT INTO Tuotteet (nimi,hinta) VALUES ('retiisi',7)"</span><span class="o">);</span>
+        <span class="n">s</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"INSERT INTO Tuotteet (nimi,hinta) VALUES ('porkkana',5)"</span><span class="o">);</span>
+        <span class="n">s</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"INSERT INTO Tuotteet (nimi,hinta) VALUES ('nauris',4)"</span><span class="o">);</span>
+        <span class="n">s</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"INSERT INTO Tuotteet (nimi,hinta) VALUES ('lanttu',8)"</span><span class="o">);</span>
+        <span class="n">s</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"INSERT INTO Tuotteet (nimi,hinta) VALUES ('selleri',4)"</span><span class="o">);</span>
+
+        <span class="nc">ResultSet</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="s">"SELECT * FROM Tuotteet"</span><span class="o">);</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"id"</span><span class="o">)+</span><span class="s">" "</span><span class="o">+</span><span class="n">r</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"nimi"</span><span class="o">)+</span><span class="s">" "</span><span class="o">+</span><span class="n">r</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"hinta"</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Koodin tulostus on seuraava:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>1 retiisi 7
+2 porkkana 5
+3 nauris 4
+4 lanttu 8
+5 selleri 4
+</code></pre></div></div>
+
+<p>Koodi tarvitsee toimiakseen JDBC-ajurin, joka osaa muodostaa yhteyden SQLite-tietokantaan.
+Saat ladattua tarvittavan ajurin koneellesi <a href="https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/">tästä</a>.
+Oletamme seuraavaksi, että ajuritiedosto on <code class="language-html highlighter-rouge">sqlite-jdbc-3.30.1.jar</code>
+(voit ladata myös mahdollisen uudemman version ajurista).</p>
+
+<p>Voit kääntää ja suorittaa yllä olevan koodin Linux-ympäristössä näin
+(kun tiedostot ovat siinä hakemistossa, jossa suoritat komennot):</p>
+
+<div class="language-prompt highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="p">$ </span>javac Testi.java
+<span class="p">$ </span>java -classpath ":sqlite-jdbc-3.30.1.jar" Testi
+1 retiisi 7
+2 porkkana 5
+3 nauris 4
+4 lanttu 8
+5 selleri 4
+</code></pre></div></div>
+
+<p>Jos käytät Windowsia, kirjoita kaksoispisteen <code class="language-html highlighter-rouge">:</code>
+sijasta puolipiste <code class="language-html highlighter-rouge">;</code> toiseen komentoon.</p>
+
+<p>Jos teet projektin NetBeansissa,
+voit tehdä tavallisen Java-ohjelman ja sitten liittää
+sen osaksi yllä mainitun JDBC-ajurin.
+Tämä onnistuu painamalla oikealla hiiren näppäimellä
+kohdasta <em>Libraries</em> ja valitsemalla <em>Add JAR/Folder</em>.
+Jos et löydä kohtaa <em>Libraries</em>,
+kokeile luoda projekti uudestaan niin,
+että sen tyyppinä on “Ant” eikä “Maven”.</p>
+
+<p>Huomaa, että jos suoritat koodin uudestaan,
+tapahtuu virhe, koska taulu <code class="language-html highlighter-rouge">Tuotteet</code> on jo tietokannassa mutta
+ohjelma yrittää luoda sen uudestaan.
+Voit aina halutessasi nollata tietokannan sisällön
+poistamalla tiedoston <code class="language-html highlighter-rouge">testi.db</code>.</p>
+
+<h2 id="tiedon-hakeminen-käyttäjänä">Tiedon hakeminen käyttäjänä</h2>
+
+<p>Seuraava koodi näyttää esimerkin, jossa käyttäjä pystyy
+hakemaan tietoa tietokannasta, jossa on valmiina taulu <code class="language-html highlighter-rouge">Tuotteet</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Testi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">db</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:sqlite:testi.db"</span><span class="o">);</span>
+        
+        <span class="nc">Scanner</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Anna tuotteen nimi:"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">nimi</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+
+        <span class="nc">PreparedStatement</span> <span class="n">p</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="s">"SELECT hinta FROM Tuotteet WHERE nimi=?"</span><span class="o">);</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">nimi</span><span class="o">);</span>
+
+        <span class="nc">ResultSet</span> <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hinta: "</span><span class="o">+</span><span class="n">r</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"hinta"</span><span class="o">));</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tuotetta ei löytynyt"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Tässä on käytössä <em>parametrisoitu</em> kysely,
+jossa on käyttäjän antaman tiedon kohdalla <code class="language-html highlighter-rouge">?</code> ja
+tieto annetaan erikseen metodilla <code class="language-html highlighter-rouge">setString</code>.
+Metodi asettaa kyselyn parametriksi 1 (eli ainoaksi parametriksi)
+annetun merkkijonon.</p>
+
+<p>Tässä on esimerkkejä koodin toiminnasta:</p>
+
+<div class="language-prompt highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Anna tuotteen nimi:
+selleri
+Hinta: 4
+</code></pre></div></div>
+
+<div class="language-prompt highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Anna tuotteen nimi:
+banaani
+Tuotetta ei löytynyt
+</code></pre></div></div>
+
+<p>Parametrisoitu kysely on turvallinen tapa yhdistää käyttäjän
+antamaa tietoa kyselyyn,
+koska tällöin käyttäjän antama tieto ei sekoitu SQL-komentoihin.
+Sen sijaan vaarallinen tapa olisi yhdistää käyttäjän antama
+tieto suoraan kyselyyn:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="nc">ResultSet</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="s">"SELECT hinta FROM Tuotteet WHERE nimi='"</span><span class="o">+</span><span class="n">nimi</span><span class="s">"'"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Nyt käyttäjä voisi antaa vaikka seuraavan tuotteen “nimen”:</p>
+
+<div class="language-prompt highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Anna tuotteen nimi:
+' OR id=1 OR nimi='
+Hinta: 7
+</code></pre></div></div>
+
+<p>Tämä tuottaa kyselyn <code class="language-html highlighter-rouge">SELECT hinta FROM Tuotteet WHERE nimi='' OR id=1 OR nimi=''</code>,
+joka hakeekin tietokannasta tuotteen, jonka id on 1.
+Käyttäjä voisi siis koettaa hakea tietoa, johon hänellä ei kuuluisi olla pääsyä.</p>
+
+<p>Tällaisesta kyselyn rakennetta muuttavasta käyttäjän antamasta
+tiedosta käytetään nimeä <em>SQL-injektio</em>.
+Tämä oli etenkin takavuosina tavallinen tapa murtautua
+huonosti toteutettuihin nettisivustoihin.</p>
+
+<h2 id="tiedon-muuttaminen-käyttäjänä">Tiedon muuttaminen käyttäjänä</h2>
+
+<p>Tässä on vielä esimerkki, jossa käyttäjä pystyy lisäämään tuotteen:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Testi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">db</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:sqlite:testi.db"</span><span class="o">);</span>
+
+        <span class="nc">Scanner</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Anna tuotteen nimi:"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">nimi</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Anna tuotteen hinta:"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">hinta</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">());</span>
+
+        <span class="nc">PreparedStatement</span> <span class="n">p</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="s">"INSERT INTO Tuotteet(nimi,hinta) VALUES (?,?)"</span><span class="o">);</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">nimi</span><span class="o">);</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="n">hinta</span><span class="o">);</span>
+
+        <span class="n">p</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tuote lisätty"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Kuten tiedon hakemisessa, turvallinen tapa toteuttaa komento on
+käyttää parametrisoitua komentoa.
+Tässä tapauksessa annamme komennolle kaksi parametria:
+tuotteen nimi ja hinta.</p>
+
+<p>Koodin suoritus voi näyttää seuraavalta:</p>
+
+<div class="language-prompt highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Anna tuotteen nimi:
+banaani
+Anna tuotteen hinta:
+3
+Tuote lisätty
+</code></pre></div></div>
+
+<p>Joskus haluamme rivin lisäyksen jälkeen selvittää,
+minkä id:n uusi lisätty rivi sai. Tämä onnistuu laajentamalla koodia seuraavasti:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Testi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">db</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:sqlite:testi.db"</span><span class="o">);</span>
+
+        <span class="nc">Scanner</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Anna tuotteen nimi:"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">nimi</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Anna tuotteen hinta:"</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">hinta</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">nextLine</span><span class="o">());</span>
+
+        <span class="nc">PreparedStatement</span> <span class="n">p</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="s">"INSERT INTO Tuotteet(nimi,hinta) VALUES (?,?)"</span><span class="o">,</span>
+                                                  <span class="nc">Statement</span><span class="o">.</span><span class="na">RETURN_GENERATED_KEYS</span><span class="o">);</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">nimi</span><span class="o">);</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="n">hinta</span><span class="o">);</span>
+
+        <span class="n">p</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">();</span>
+        <span class="nc">ResultSet</span> <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">getGeneratedKeys</span><span class="o">();</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tuote lisätty id:llä "</span><span class="o">+</span><span class="n">g</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Nyt koodin suoritus voisi näyttää tältä:</p>
+
+<div class="language-prompt highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Anna tuotteen nimi:
+banaani
+Anna tuotteen hinta:
+3
+Tuote lisätty id:llä 6
+</code></pre></div></div>
+
+<h2 id="virheenkäsittely">Virheenkäsittely</h2>
+
+<p>Jos kyselyssä tapahtuu virhe, niin tämä keskeyttää ohjelman suorituksen.
+Näin käy seuraavassa ohjelmassa, jos taulua <code class="language-html highlighter-rouge">Kurssit</code> ei ole olemassa:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Testi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">db</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:sqlite:testi.db"</span><span class="o">);</span>
+        <span class="nc">Statement</span> <span class="n">s</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+
+        <span class="nc">ResultSet</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="s">"SELECT * FROM Kurssit"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Tässä tapauksessa ohjelma päättyy seuraavaan virheeseen:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="syntax"><code>Exception in thread "main" org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such table: Kurssit)
+	at org.sqlite.core.DB.newSQLException(DB.java:941)
+	at org.sqlite.core.DB.newSQLException(DB.java:953)
+	at org.sqlite.core.DB.throwex(DB.java:918)
+	at org.sqlite.core.NativeDB.prepare_utf8(Native Method)
+	at org.sqlite.core.NativeDB.prepare(NativeDB.java:134)
+	at org.sqlite.core.DB.prepare(DB.java:257)
+	at org.sqlite.jdbc3.JDBC3Statement.executeQuery(JDBC3Statement.java:73)
+	at Testi.main(Testi.java:8)
+</code></pre></div></div>
+
+<p>Tällä hetkellä metodin <code class="language-html highlighter-rouge">main</code> alussa lukee <code class="language-html highlighter-rouge">throws SQLException</code>,
+mikä tarkoittaa, että mahdolliset SQL-poikkeukset heitetään eteenpäin.
+Koska olemme metodissa <code class="language-html highlighter-rouge">main</code>, niin kukaan muukaan ei käsittele poikkeuksia
+ja ohjelman suoritus keskeytyy.</p>
+
+<p>Voimme kuitenkin halutessamme varautua virheeseen <code class="language-html highlighter-rouge">try</code>-rakenteen
+avulla vaikkapa näin:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="syntax"><code><span class="kn">import</span> <span class="nn">java.sql.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Testi</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">db</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:sqlite:testi.db"</span><span class="o">);</span>
+        <span class="nc">Statement</span> <span class="n">s</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">ResultSet</span> <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="s">"SELECT * FROM Kurssit"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Kysely ei onnistunut"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Nyt virhetilanteessa ohjelma tulostaa viestin ja jatkaa toimintaansa.</p>
+
+</div>
+        <div class="footer">
+    <img src=/syksy-2020/assets/img/HY_logo.png>
+    </div>
+    </div>
+</body>
+
+</html>
